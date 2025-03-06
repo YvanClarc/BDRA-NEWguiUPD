@@ -6,9 +6,10 @@
 package admin;
 
 import config.dbConnector;
-import dbtestgui.registration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -53,7 +54,7 @@ public class usersForm extends javax.swing.JFrame {
         usersTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        update = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -121,15 +122,20 @@ public class usersForm extends javax.swing.JFrame {
         jPanel1.add(jPanel3);
         jPanel3.setBounds(20, 70, 90, 80);
 
-        jPanel4.setBackground(new java.awt.Color(112, 73, 73));
-        jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        update.setBackground(new java.awt.Color(112, 73, 73));
+        update.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+        });
+        update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/002-user-avatar.png"))); // NOI18N
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, -1));
+        update.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, -1));
 
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(20, 170, 90, 80);
+        jPanel1.add(update);
+        update.setBounds(20, 170, 90, 80);
 
         jPanel5.setBackground(new java.awt.Color(112, 73, 73));
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -197,6 +203,34 @@ public class usersForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jPanel3MouseClicked
 
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        int rowIndex = usersTable.getSelectedRow();
+    
+    if (rowIndex < 0) {
+        JOptionPane.showMessageDialog(null, "Please select an Item");
+    } else {
+        try {
+            dbConnector connector = new dbConnector();
+            TableModel tbl = usersTable.getModel();
+            ResultSet rs = connector.getData("SELECT * FROM tbl_user WHERE u_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
+            if (rs.next()) {
+                RegistrationAD reg = new RegistrationAD();
+                reg.fname.setText(""+rs.getString("u_fname"));
+                reg.ln1.setText(""+rs.getString("u_lname"));
+                reg.username1.setText(""+rs.getString("u_username"));
+                reg.email1.setText(""+rs.getString("u_email"));
+                reg.pass1.setText(""+rs.getString("u_password"));
+                reg.ut1.setSelectedItem(""+rs.getString("u_type"));
+                reg.as1.setSelectedItem(""+rs.getString("u_status"));
+                reg.setVisible(true);
+                this.dispose();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Errors: " + ex.getMessage());
+        }
+    }
+    }//GEN-LAST:event_updateMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -246,9 +280,9 @@ public class usersForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel update;
     private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,7 +9,9 @@ import dbtestgui.*;
 import config.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -28,18 +30,18 @@ public class RegistrationAD extends javax.swing.JFrame {
         public boolean dupeCheck(){
             dbConnector dbc = new dbConnector();
         try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = '" + username.getText()+ "' OR u_email = '" + email.getText()+ "'";
+            String query = "SELECT * FROM tbl_user  WHERE u_username = '" + username1.getText()+ "' OR u_email = '" + email1.getText()+ "'";
             ResultSet resultSet = dbc.getData(query);
             if(resultSet.next()){               
                 em = resultSet.getString("u_email");
-                if(em.equals(email.getText())){
+                if(em.equals(email1.getText())){
                     JOptionPane.showMessageDialog(null, "Email already USED!");
-                    email.setText("");
+                    email1.setText("");
                 }
                 uname = resultSet.getString("u_username");
-                if(uname.equals(username.getText())){
+                if(uname.equals(username1.getText())){
                     JOptionPane.showMessageDialog(null, "Username already USED!");
-                    username.setText("");
+                    username1.setText("");
                 }
                 return true;
             }else{
@@ -50,6 +52,7 @@ public class RegistrationAD extends javax.swing.JFrame {
                 return false;
             }
         }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,20 +65,24 @@ public class RegistrationAD extends javax.swing.JFrame {
 
         Main = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        fn = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        ln = new javax.swing.JTextField();
+        ln1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
+        username1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        pass = new javax.swing.JPasswordField();
+        pass1 = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
+        email1 = new javax.swing.JTextField();
         cancel = new javax.swing.JButton();
-        RegisterButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        ut = new javax.swing.JComboBox<>();
+        as1 = new javax.swing.JComboBox<>();
+        deleteButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        ut1 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,75 +94,75 @@ public class RegistrationAD extends javax.swing.JFrame {
         jLabel5.setText("First Name:");
         Main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
 
-        fn.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        fn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fn.addActionListener(new java.awt.event.ActionListener() {
+        fname.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnActionPerformed(evt);
+                fnameActionPerformed(evt);
             }
         });
-        Main.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 210, 30));
+        Main.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Last Name:");
         Main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
 
-        ln.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        ln.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ln.addActionListener(new java.awt.event.ActionListener() {
+        ln1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        ln1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ln1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnActionPerformed(evt);
+                ln1ActionPerformed(evt);
             }
         });
-        Main.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 210, 30));
+        Main.add(ln1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 210, 30));
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Username: ");
         Main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
 
-        username.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        username.addActionListener(new java.awt.event.ActionListener() {
+        username1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        username1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        username1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
+                username1ActionPerformed(evt);
             }
         });
-        Main.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 210, 30));
+        Main.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 210, 30));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Password: ");
         Main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
 
-        pass.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pass.addActionListener(new java.awt.event.ActionListener() {
+        pass1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        pass1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pass1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passActionPerformed(evt);
+                pass1ActionPerformed(evt);
             }
         });
-        Main.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 210, 30));
+        Main.add(pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 210, 30));
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Account type:");
-        Main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
+        jLabel9.setText("Account status:");
+        Main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Email:");
         Main.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
 
-        email.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        email.addActionListener(new java.awt.event.ActionListener() {
+        email1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        email1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        email1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
+                email1ActionPerformed(evt);
             }
         });
-        Main.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 210, 30));
+        Main.add(email1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 210, 30));
 
         cancel.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         cancel.setText("CANCEL");
@@ -164,29 +171,65 @@ public class RegistrationAD extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
-        Main.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 90, 20));
+        Main.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 90, 20));
 
-        RegisterButton.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        RegisterButton.setText("REGISTER");
-        RegisterButton.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        addButton.setText("ADD");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterButtonActionPerformed(evt);
+                addButtonActionPerformed(evt);
             }
         });
-        Main.add(RegisterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 90, 20));
+        addButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                addButtonKeyPressed(evt);
+            }
+        });
+        Main.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 90, 20));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("Register your account");
         jLabel1.setToolTipText("");
         Main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 250, 50));
 
-        ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Administrator" }));
-        ut.addActionListener(new java.awt.event.ActionListener() {
+        as1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Active", " " }));
+        as1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                utActionPerformed(evt);
+                as1ActionPerformed(evt);
             }
         });
-        Main.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 210, 30));
+        Main.add(as1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 210, 30));
+
+        deleteButton.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        deleteButton.setText("DELETE");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+        Main.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 90, 20));
+
+        updateButton.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        updateButton.setText("UPDATE");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+        Main.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 90, 20));
+
+        ut1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Administrator" }));
+        ut1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ut1ActionPerformed(evt);
+            }
+        });
+        Main.add(ut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 210, 30));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Account type:");
+        Main.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,57 +248,68 @@ public class RegistrationAD extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
+    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fnActionPerformed
+    }//GEN-LAST:event_fnameActionPerformed
 
-    private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
+    private void ln1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ln1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lnActionPerformed
+    }//GEN-LAST:event_ln1ActionPerformed
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+    private void username1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
+    }//GEN-LAST:event_username1ActionPerformed
 
-    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
+    private void pass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passActionPerformed
+    }//GEN-LAST:event_pass1ActionPerformed
 
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+    private void email1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
+    }//GEN-LAST:event_email1ActionPerformed
 
-    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-if (fn.getText().isEmpty() || 
-              ln.getText() .isEmpty() ||
-            username.getText().isEmpty() ||
-             pass.getText().isEmpty() || email.getText().isEmpty()){
-          
-          JOptionPane.showMessageDialog(null, "Error! Complete the Information!"); 
-           return;         
-      }else if(pass.getText().length()< 8){
-          JOptionPane.showMessageDialog(null, "Password should contain at least 8 characters");
-          pass.setText("");
-      }else if(dupeCheck()){
-          System.out.println("ERROR,Duplicate must not exist");
-      }
-      else{
-        dbConnector dbc = new dbConnector();
-       if(
-       dbc.insertData("INSERT INTO tbl_user(u_fname, u_lname, u_email, u_username, u_password, u_type, u_status)"
-               + "VALUES ('"+fn.getText()+"', '"+ln.getText()+"','"+email.getText()+"', '"+username.getText()+"', '"+pass.getText()+"', '"+ut.getSelectedItem()+"', 'Pending')"))
-       {          
-           JOptionPane.showMessageDialog(null, "Registration Successful!");
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+if (fname.getText().isEmpty() || 
+        ln1.getText().isEmpty() ||
+        username1.getText().isEmpty() ||
+        pass1.getText().isEmpty() || 
+        email1.getText().isEmpty()) {
+  
+        JOptionPane.showMessageDialog(null, "Error! Complete the Information!"); 
+        return;         
+    } else if (pass1.getText().length() < 8) {
+        JOptionPane.showMessageDialog(null, "Password should contain at least 8 characters");
+        pass1.setText("");
+        return; // Add return to stop further processing
+    } else if (dupeCheck()) {
+        System.out.println("ERROR, Duplicate must not exist");
+        return; // Stop further execution if there is a duplicate
+    } else {
+        String emailText = email1.getText();
+        // Email validation using regex
+        String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
-           usersForm uf = new usersForm(); 
-           uf.setVisible(true);  
-           this.dispose(); 
-       }else{
-           JOptionPane.showMessageDialog(null, "Nuh Uh");
-       }
+        if (!emailText.matches(emailRegex)) {
+            JOptionPane.showMessageDialog(null, "Invalid email format!");
+            return;
         }
-          // TODO add your handling code here:
-    }//GEN-LAST:event_RegisterButtonActionPerformed
+
+        dbConnector dbc = new dbConnector();
+
+        // Use prepared statements to insert data
+        String insertQuery = "INSERT INTO tbl_user(u_fname, u_lname, u_email, u_username, u_password, u_type, u_status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
+        if (dbc.insertData(insertQuery, fname.getText(), ln1.getText(), emailText, username1.getText(), pass1.getText(), ut1.getSelectedItem().toString(), as1.getSelectedItem().toString())) {          
+            JOptionPane.showMessageDialog(null, "Registration Successful!");
+
+            usersForm uf = new usersForm();
+            uf.setVisible(true);
+            this.dispose(); 
+        } else {
+            JOptionPane.showMessageDialog(null, "Registration Failed!");
+        }
+    }
+    }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         usersForm uf = new usersForm();
@@ -263,9 +317,25 @@ if (fn.getText().isEmpty() ||
         this.dispose();
     }//GEN-LAST:event_cancelActionPerformed
 
-    private void utActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utActionPerformed
+    private void as1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_as1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_utActionPerformed
+    }//GEN-LAST:event_as1ActionPerformed
+
+    private void addButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addButtonKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addButtonKeyPressed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void ut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ut1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ut1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,20 +377,24 @@ if (fn.getText().isEmpty() ||
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Main;
-    private javax.swing.JButton RegisterButton;
+    private javax.swing.JButton addButton;
+    public javax.swing.JComboBox<String> as1;
     private javax.swing.JButton cancel;
-    private javax.swing.JTextField email;
-    private javax.swing.JTextField fn;
+    private javax.swing.JButton deleteButton;
+    public javax.swing.JTextField email1;
+    public javax.swing.JTextField fname;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField ln;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField username;
-    private javax.swing.JComboBox<String> ut;
+    public javax.swing.JTextField ln1;
+    public javax.swing.JPasswordField pass1;
+    private javax.swing.JButton updateButton;
+    public javax.swing.JTextField username1;
+    public javax.swing.JComboBox<String> ut1;
     // End of variables declaration//GEN-END:variables
 }

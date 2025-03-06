@@ -226,33 +226,42 @@ public class registration extends javax.swing.JFrame {
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
 if (fn.getText().isEmpty() || 
-              ln.getText() .isEmpty() ||
-            username.getText().isEmpty() ||
-             pass.getText().isEmpty() || email.getText().isEmpty()){
-          
-          JOptionPane.showMessageDialog(null, "Error! Complete the Information!"); 
-           return;         
-      }else if(pass.getText().length()< 8){
-          JOptionPane.showMessageDialog(null, "Password should contain at least 8 characters");
-          pass.setText("");
-      }else if(dupeCheck()){
-          System.out.println("ERROR,Duplicate must not exist");
-      }
-      else{
-        dbConnector dbc = new dbConnector();
-       if(
-       dbc.insertData("INSERT INTO tbl_user(u_fname, u_lname, u_email, u_username, u_password, u_type, u_status)"
-               + "VALUES ('"+fn.getText()+"', '"+ln.getText()+"','"+email.getText()+"', '"+username.getText()+"', '"+pass.getText()+"', '"+ut.getSelectedItem()+"', 'Pending')"))
-       {          
-           JOptionPane.showMessageDialog(null, "Registration Successful!");
+    ln.getText().isEmpty() ||
+    username.getText().isEmpty() ||
+    pass.getText().isEmpty() || 
+    email.getText().isEmpty()) {
+  
+    JOptionPane.showMessageDialog(null, "Error! Complete the Information!"); 
+    return;         
+} else if (pass.getText().length() < 8) {
+    JOptionPane.showMessageDialog(null, "Password should contain at least 8 characters");
+    pass.setText("");
+} else if (dupeCheck()) {
+    System.out.println("ERROR, Duplicate must not exist");
+} else {
+    String emailText = email.getText();
+    // Email validation using regex
+    String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
-           login log = new login(); 
-           log.setVisible(true);  
-           this.dispose(); 
-       }else{
-           JOptionPane.showMessageDialog(null, "Nuh Uh");
-       }
-        }
+    if (!emailText.matches(emailRegex)) {
+        JOptionPane.showMessageDialog(null, "Invalid email format!");
+        return;
+    }
+
+    dbConnector dbc = new dbConnector();
+    
+    if (dbc.insertData("INSERT INTO tbl_user(u_fname, u_lname, u_email, u_username, u_password, u_type, u_status) "
+                       + "VALUES ('" + fn.getText() + "', '" + ln.getText() + "', '" + emailText + "', '" + 
+                       username.getText() + "', '" + pass.getText() + "', '" + ut.getSelectedItem() + "', 'Pending')")) {          
+        JOptionPane.showMessageDialog(null, "Registration Successful!");
+
+        login log = new login(); 
+        log.setVisible(true);  
+        this.dispose(); 
+    } else {
+        JOptionPane.showMessageDialog(null, "Nuh Uh");
+    }
+}
           // TODO add your handling code here:
     }//GEN-LAST:event_RegisterButtonActionPerformed
 

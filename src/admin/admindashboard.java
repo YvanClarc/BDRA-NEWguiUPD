@@ -5,7 +5,9 @@
  */
 package admin;
 
+import config.Session;
 import dbtestgui.login;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,10 +35,20 @@ public class admindashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        acc_id = new javax.swing.JLabel();
+        acc_name = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(135, 91, 91));
         jPanel1.setLayout(null);
@@ -62,19 +74,42 @@ public class admindashboard extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 910, 60);
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/005-man-in-suit-and-tie.png"))); // NOI18N
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(10, 320, 70, 90);
+
+        jPanel3.setBackground(new java.awt.Color(109, 71, 52));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        acc_id.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        acc_id.setText("ID");
+        jPanel3.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 140, 30));
+
+        acc_name.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        acc_name.setText("NAME");
+        jPanel3.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 140, 40));
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(0, 320, 910, 90);
+
+        jPanel4.setBackground(new java.awt.Color(112, 73, 73));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/006-multiple-users-silhouette.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(40, 40, 70, 160);
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 70));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel3.setText("USERS");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 150, 50, 20);
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 50, -1));
+
+        jPanel1.add(jPanel4);
+        jPanel4.setBounds(40, 90, 100, 100);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,6 +140,19 @@ public class admindashboard extends javax.swing.JFrame {
         uf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       Session sess = Session.getInstance();
+       if(sess.getUid() == 0){
+           JOptionPane.showMessageDialog(null,"NO account found, login first!");
+           login lg = new login();
+           lg.setVisible(true);
+           this.dispose();
+       }else{
+           acc_name.setText(""+sess.getFname());
+           acc_id.setText(""+sess.getUid());
+       }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -142,11 +190,16 @@ public class admindashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acc_id;
+    private javax.swing.JLabel acc_name;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

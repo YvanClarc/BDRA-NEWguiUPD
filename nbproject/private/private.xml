@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/dbtestGUI/src/dbtestgui/login.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/dbtestGUI/src/admin/usersForm.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/dbtestGUI/src/admin/admindashboard.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/dbtestGUI/src/config/dbConnector.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/dbtestGUI/src/user/userDashboard.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/dbtestGUI/src/dbtestgui/registration.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/BDRA-NEWguiUPD/src/user/userDashboard.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/BDRA-NEWguiUPD/src/config/Session.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/BDRA-NEWguiUPD/src/admin/admindashboard.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/BDRA-NEWguiUPD/src/config/dbConnector.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/BDRA-NEWguiUPD/src/admin/usersForm.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/BDRA-NEWguiUPD/src/admin/RegistrationAD.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/BDRA-NEWguiUPD/src/dbtestgui/login.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Documents/NetBeansProjects/BDRA-NEWguiUPD/src/dbtestgui/registration.java</file>
         </group>
     </open-files>
 </project-private>

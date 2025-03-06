@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2025 at 03:40 AM
+-- Generation Time: Mar 06, 2025 at 01:36 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,14 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_username`, `u_password`, `u_email`, `u_type`, `u_status`) VALUES
 (1, 'Ivan', 'Yonzon', 'userayban', '123456789!', 'ayban@gmail.com', 'Administrator', 'Active'),
 (2, 'wasd', 'wasd', 'wasd', '12345678!', 'wasd@gmail.com', 'User', 'Pending'),
-(6, 'christian', 'colinas', 'cowlens', '12345678', 'colins@gmail.com', 'User', 'Active');
+(3, 'christian', 'colinas', 'cowlens', '12345678', 'colins@gmail.com', 'Administrator', 'Active'),
+(4, 'ivan', 'yonzon', 'gwapo', '12345678', 'ayben@gmail.com', 'User', 'Pending'),
+(8, 'maby', 'autahay', 'mabsty', '123456789', 'mab@test.com', 'User', 'Pending'),
+(9, 'wasdwa', 'dwasdwasd', 'wasdwasdwad', '12345678', '2asdadw@colina.com', 'User', 'Pending'),
+(10, 'wasdwasd', 'wasdwasd', 'wasdwasdwasdwasd', '1234567890', 'was@gmail.com', 'User', 'Pending'),
+(11, 'ivans', 'yonzonx', 'owshie', '12345678', 'ivans@gmail.com', 'User', 'Pending'),
+(12, 'wasdw', 'wasdwasd', 'wasdwasdwa', '12345678', 'awasdwasdadsa@gmail.com', 'User', 'Pending'),
+(13, 'wasdwad', 'wasdwasdw', 'wasdwasdasdawdas', '123456789', 'wasdw@gmail.com', 'User', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +72,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
