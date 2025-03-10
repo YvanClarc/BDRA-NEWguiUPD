@@ -54,6 +54,7 @@ public class admindashboard extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(109, 71, 52));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
@@ -79,6 +80,7 @@ public class admindashboard extends javax.swing.JFrame {
         jLabel5.setBounds(10, 320, 70, 90);
 
         jPanel3.setBackground(new java.awt.Color(109, 71, 52));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         acc_id.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
@@ -149,7 +151,7 @@ public class admindashboard extends javax.swing.JFrame {
            lg.setVisible(true);
            this.dispose();
        }else{
-           acc_name.setText(""+sess.getFname());
+           acc_name.setText(""+sess.getUsername());
            acc_id.setText(""+sess.getUid());
        }
     }//GEN-LAST:event_formWindowActivated

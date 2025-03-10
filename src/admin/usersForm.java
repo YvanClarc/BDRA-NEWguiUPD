@@ -71,6 +71,7 @@ public class usersForm extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(109, 71, 52));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
@@ -91,6 +92,7 @@ public class usersForm extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 910, 60);
 
+        usersTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         usersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -214,8 +216,9 @@ public class usersForm extends javax.swing.JFrame {
             TableModel tbl = usersTable.getModel();
             ResultSet rs = connector.getData("SELECT * FROM tbl_user WHERE u_id = '"+tbl.getValueAt(rowIndex, 0)+"'");
             if (rs.next()) {
-                RegistrationAD reg = new RegistrationAD();
-                reg.fname.setText(""+rs.getString("u_fname"));
+                RegistrationADupdate reg = new RegistrationADupdate();
+                reg.uid.setText(""+rs.getString("u_id"));
+                reg.fname1.setText(""+rs.getString("u_fname"));
                 reg.ln1.setText(""+rs.getString("u_lname"));
                 reg.username1.setText(""+rs.getString("u_username"));
                 reg.email1.setText(""+rs.getString("u_email"));

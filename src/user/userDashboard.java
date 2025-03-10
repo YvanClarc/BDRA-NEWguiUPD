@@ -5,7 +5,9 @@
  */
 package user;
 
+import config.Session;
 import dbtestgui.login;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,13 +35,24 @@ public class userDashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        acc_name = new javax.swing.JLabel();
+        acc_id = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(135, 91, 91));
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(109, 71, 52));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
@@ -59,6 +72,32 @@ public class userDashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 910, 80);
+
+        jPanel3.setBackground(new java.awt.Color(109, 71, 52));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/account (1).png"))); // NOI18N
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 70));
+
+        acc_name.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        acc_name.setText("NAME");
+        jPanel3.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 140, 40));
+
+        acc_id.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        acc_id.setText("ID");
+        jPanel3.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 140, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 40, 40));
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(0, 330, 910, 100);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,6 +122,25 @@ public class userDashboard extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+       if(sess.getUid() == 0){
+           JOptionPane.showMessageDialog(null,"NO account found, login first!");
+           login lg = new login();
+           lg.setVisible(true);
+           this.dispose();
+       }else{
+           acc_name.setText(""+sess.getUsername());
+           acc_id.setText(""+sess.getUid());
+       }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        accountDetails ad = new accountDetails();
+        ad.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -120,9 +178,14 @@ public class userDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acc_id;
+    private javax.swing.JLabel acc_name;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,6 +19,7 @@ public class Session {
        private String username;
         private String type;
         private String status;
+        private String password;
         
         private Session(){
             //private constructor that prevents instance           
@@ -90,5 +91,6 @@ public class Session {
     public void setStatus(String status) {
         this.status = status;
     }
-             
+            
+    
 }

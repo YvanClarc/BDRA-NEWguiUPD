@@ -6,6 +6,8 @@
 package dbtestgui;
 
 import config.dbConnector;
+import config.passwordHasher;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -249,10 +251,12 @@ if (fn.getText().isEmpty() ||
     }
 
     dbConnector dbc = new dbConnector();
+    try{
+    String ps = passwordHasher.hashPassword(pass.getText());
     
     if (dbc.insertData("INSERT INTO tbl_user(u_fname, u_lname, u_email, u_username, u_password, u_type, u_status) "
                        + "VALUES ('" + fn.getText() + "', '" + ln.getText() + "', '" + emailText + "', '" + 
-                       username.getText() + "', '" + pass.getText() + "', '" + ut.getSelectedItem() + "', 'Pending')")) {          
+                       username.getText() + "', '" + ps+ "', '" + ut.getSelectedItem() + "', 'Pending')")) {          
         JOptionPane.showMessageDialog(null, "Registration Successful!");
 
         login log = new login(); 
@@ -260,6 +264,9 @@ if (fn.getText().isEmpty() ||
         this.dispose(); 
     } else {
         JOptionPane.showMessageDialog(null, "Nuh Uh");
+    }
+    }catch(NoSuchAlgorithmException ex){
+        System.out.println(""+ex);
     }
 }
           // TODO add your handling code here:
